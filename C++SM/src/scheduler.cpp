@@ -11,8 +11,30 @@ Scheduler::Scheduler(int numTasks, SM ** stateMachines)
     this->commonInterval = this->stateMachines[0]->period;
     for(int i = 1; i < this->numTasks; ++i)
     {
-        this->commonInterval = this->findGCD(this->commonInterval, this->stateMachines[i]->period);
+        this->commonInterval = this->FindGCD(this->commonInterval, this->stateMachines[i]->period);
     }
+}
+
+unsigned long Scheduler::GetInterval()
+{
+    return this->commonInterval;
+}
+
+int Scheduler::GetNumTasks()
+{
+    return this->numTasks;
+}
+
+unsigned long Scheduler::FindGCD(unsigned long a, unsigned long b)
+{
+    unsigned long c;
+    while(1){
+        c = a % b;
+        if( c == 0 ) { return b; }
+        a = b;
+        b = c;
+    }
+    return 0;
 }
 
 void Scheduler::Loop()
@@ -35,26 +57,4 @@ void Scheduler::Step(unsigned long currentTime)
             this->stateMachines[i]->elapsedTime = 0;
         }
     }
-}
-
-unsigned long Scheduler::getInterval()
-{
-    return this->commonInterval;
-}
-
-int Scheduler::getNumTasks()
-{
-    return this->numTasks;
-}
-
-unsigned long Scheduler::findGCD(unsigned long a, unsigned long b)
-{
-    unsigned long c;
-    while(1){
-        c = a % b;
-        if( c == 0 ) { return b; }
-        a = b;
-        b = c;
-    }
-    return 0;
 }

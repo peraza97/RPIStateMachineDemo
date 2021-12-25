@@ -24,8 +24,8 @@ int main(int argc, char ** argv)
     stateMachines[1] = new BlinkSM(ledPin2, 0, 500);
 
     Scheduler * myScheduler = new Scheduler(2, stateMachines);
-    printf("Scheduler numTasks: %d\n", myScheduler->getNumTasks());
-    printf("Scheduler common period: %d\n", myScheduler->getInterval());
+    printf("Scheduler numTasks: %d\n", myScheduler->GetNumTasks());
+    printf("Scheduler common period: %d\n", myScheduler->GetInterval());
 
     myScheduler->Loop();
 
