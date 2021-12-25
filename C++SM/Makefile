@@ -3,7 +3,7 @@ CFLAGS = -std=c++11
 CPPFLAGS = -Iheaders 
 SRC_DIR = src
 OBJ_DIR = build
-LDLIBS = -lwiringPi
+LDLIBS = -lwiringPi -lpthread
 PROJ_NAME = rasp
 RM = rm 
 

@@ -1,5 +1,8 @@
 #include "../headers/scheduler.h"
 #include <stdio.h>
+#include <thread>
+
+using namespace std;
 
 Scheduler::Scheduler(){}
 
@@ -48,13 +51,22 @@ void Scheduler::Loop()
 
 void Scheduler::Step(unsigned long currentTime)
 {
+    thread threads[this->numTasks];
     for(int i = 0; i < this->numTasks; ++i)
     {
         this->stateMachines[i]->elapsedTime += this->commonInterval;
         if(this->stateMachines[i]->elapsedTime >= this->stateMachines[i]->period)
         {
-            this->stateMachines[i]->Step();
+            threads[i] = thread(&SM::Step,this->stateMachines[i]);
             this->stateMachines[i]->elapsedTime = 0;
+        }
+    }
+
+    for(int i = 0; i < this->numTasks; ++i)
+    {
+        if(threads[i].joinable()) //thread is not running if sm is not ready
+        {
+            threads[i].join();
         }
     }
 }

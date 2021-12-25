@@ -22,7 +22,7 @@ int main(int argc, char ** argv)
     pinMode (ledPin2, OUTPUT);
     SM ** stateMachines = new SM*[2];
     stateMachines[0] = new BlinkSM("Blink1", ledPin1, 0, 1000);
-    stateMachines[1] = new BlinkSM("Blink2", ledPin2, 0, 1000);
+    stateMachines[1] = new BlinkSM("Blink2", ledPin2, 0, 500);
 
     Scheduler * myScheduler = new Scheduler(2, stateMachines);
     printf("Scheduler numTasks: %d\n", myScheduler->GetNumTasks());
