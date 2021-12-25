@@ -12,10 +12,10 @@ OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 all: $(OBJ_DIR)/$(PROJ_NAME)
 
 $(OBJ_DIR)/$(PROJ_NAME): $(OBJ_FILES)
-	$(COMPILE) $(CFLAGS) -o $@ $^ $(LDLIBS)
+	$(COMPILE) $^ $(LDLIBS) -o $@  
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(COMPILE) $(CFLAGS) -c -o $@ $< $(LDLIBS)
+	$(COMPILE) $(CFLAGS) -c $< -o $@ 
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR) 

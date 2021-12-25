@@ -5,20 +5,14 @@ Scheduler::Scheduler(){}
 
 Scheduler::Scheduler(int numTasks, SM ** stateMachines)
 {
-    this->commonInterval = 0;
     this->numTasks = numTasks;
     this->stateMachines = stateMachines;
-    this->SetUp();
-}
-
-void Scheduler::SetUp()
-{
-    unsigned long currentGCD  = this->stateMachines[0]->period;
+    
+    this->commonInterval = this->stateMachines[0]->period;
     for(int i = 1; i < this->numTasks; ++i)
     {
-        currentGCD = this->findGCD(currentGCD, this->stateMachines[i]->period);
+        this->commonInterval = this->findGCD(this->commonInterval, this->stateMachines[i]->period);
     }
-    this->commonInterval = currentGCD;
 }
 
 void Scheduler::Loop()

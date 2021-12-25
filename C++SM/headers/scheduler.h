@@ -10,7 +10,6 @@ class Scheduler
         unsigned long commonInterval;
         int numTasks;
         SM ** stateMachines;
-        void SetUp();
         unsigned long findGCD(unsigned long, unsigned long);
     public:
         Scheduler();
