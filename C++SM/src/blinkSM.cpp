@@ -1,9 +1,10 @@
 #include <wiringPi.h>
+#include <iostream>
 #include "../headers/blinkSM.h"
 
 using namespace std;
 
-BlinkSM::BlinkSM(int ledPin, unsigned long elapsedTime, unsigned long period): SM(elapsedTime, period)
+BlinkSM::BlinkSM(string name, int ledPin, unsigned long elapsedTime, unsigned long period): SM(name, elapsedTime, period)
 {
     this->ledPin = ledPin;
     this->state = OFF;

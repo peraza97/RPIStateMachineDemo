@@ -1,14 +1,19 @@
 #ifndef __TASK_SM_H__
 #define __TASK_SM_H__
+#include <iostream>
+
+using namespace std;
 
 class SM
 {
     public:
         unsigned long elapsedTime;
         unsigned long period;
+        string name;
 
-        SM(unsigned long elapsedTime, unsigned long period)
+        SM(string name, unsigned long elapsedTime, unsigned long period)
         {
+            this->name = name;
             this->elapsedTime = elapsedTime;
             this->period = period;
         }

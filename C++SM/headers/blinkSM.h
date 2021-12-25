@@ -8,7 +8,7 @@ enum BlinkStates { OFF, ON };
 class BlinkSM : public SM
 {
     public:
-        BlinkSM(int, unsigned long, unsigned long);
+        BlinkSM(string, int, unsigned long, unsigned long);
         void Step();
         void Stop();
         
