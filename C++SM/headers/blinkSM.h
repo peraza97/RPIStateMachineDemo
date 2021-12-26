@@ -3,12 +3,12 @@
 
 #include "sm.h"
 
-enum BlinkStates { OFF, ON };
+enum BlinkStates { B_INIT, B_OFF, B_ON };
 
 class BlinkSM : public SM
 {
     public:
-        BlinkSM(string, int, unsigned long, unsigned long);
+        BlinkSM(string, unsigned long, unsigned long, int);
         void Step();
         void Stop();
         
