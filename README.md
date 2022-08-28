@@ -1,3 +1,4 @@
 # Raspberry Pi State Machine Demo
-This repository implements basic state machine interface in python and C++
+This repository defines state machine interface in python and C++ 
+2 implementations are included as examples
 
